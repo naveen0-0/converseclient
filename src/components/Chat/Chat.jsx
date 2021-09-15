@@ -1,13 +1,18 @@
 import React,{ useEffect, useState } from 'react'
 import styles from './chat.module.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import FriendRequest from '../FriendRequest/FriendRequest'
 import { BsPerson } from 'react-icons/bs'
+import Friend from '../Friend/Friend'
 
 export default function Chat({ socket }) {
+  const dispatch = useDispatch()
   const friends = useSelector(state => state.friends)
   const [open, setOpen] = useState(false);
 
+  const updateSelectedFriend = (friend) => {
+    dispatch({ type:"UPDATE_SELECTED_FRIEND",payload:friend})
+  }
 
 
   return (
@@ -20,8 +25,20 @@ export default function Chat({ socket }) {
         </div>
       </div>
 
-      <div>Friends</div>
-      <div>{friends.map((friend, index) => friend.requestAccepted?<div key={index}>{friend.username}</div>: null)}</div>
+      <div className={styles.friends}>
+        <div className={styles.friendsnames}>
+          {friends.map((friend,index) => {
+            if(friend.requestAccepted){
+              return <div key={index} className={styles.friendsname} onClick={() => updateSelectedFriend(friend)}>{friend.username}</div>
+            }
+          })}
+        </div>
+
+          <Friend socket={socket}/>
+      </div>
+
     </div>
   )
 }
+
+{/* <div>{friends.map((friend, index) => friend.requestAccepted?<div key={index}>{friend.username}</div>: null)}</div> */}

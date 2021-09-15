@@ -3,14 +3,14 @@ import styles from './friendrequest.module.css'
 import { useSelector } from 'react-redux'
 
 export default function FriendRequest({ socket, friend }) {
-  const { username } = useSelector(state => state.user)
+  const { username, chatId } = useSelector(state => state.user)
 
   const AcceptRequest = () => {
-    socket.emit("accept_friend_request",{ chatId : friend.chatId})
+    socket.emit("accept_friend_request",{ chatId:chatId,friendChatId : friend.chatId })
   }
   
   const DeclineRequest = () => {
-    socket.emit("decline_friend_request",{ chatId : friend.chatId})
+    socket.emit("decline_friend_request",{ chatId:chatId,friendChatId : friend.chatId })
   }
 
 

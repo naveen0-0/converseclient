@@ -6,7 +6,6 @@ import NavBar from './components/NavBar/NavBar'
 import DashBoard from './components/DashBoard/DashBoard'
 import Login from './components/Login/Login'
 import Signup from './components/Signup/Signup'
-import HomePage from './components/HomePage/HomePage'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 
@@ -19,11 +18,19 @@ const App = () => {
       dispatch({ type:"UPDATE_USER",payload:data.user})
     }
   }
+
+  const getFriends = async () => {
+    let { data } = await axios.get('http://localhost:5000/api/friends',{ headers : { Authorization : localStorage.getItem('converse_app_auth_token')}})
+    if(data.statusload){
+      dispatch({ type:"UPDATE_FRIENDS",payload:data.friends})
+    }
+  }
   
 
 
   useEffect(() => {
     getUser()
+    getFriends()
   }, [])
 
   return (
@@ -31,10 +38,9 @@ const App = () => {
       <Router>
           <NavBar/>
         <Switch>
-          <Route path="/" exact component={HomePage}/>
           <Route path="/signup" exact component={Signup}/>
           <Route path="/login" exact component={Login}/>
-          <Route path="/dashboard" exact component={DashBoard}/>
+          <Route path="/" exact component={DashBoard}/>
         </Switch>
       </Router>
     </>

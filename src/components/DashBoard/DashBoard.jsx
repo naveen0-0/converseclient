@@ -8,6 +8,7 @@ import Chat from '../Chat/Chat'
 import Profile from '../Profile/Profile'
 import SearchForFriend from '../SearchForFriend/SearchForFriend'
 import axios from 'axios'
+import { makeAUserFriend,addMsg } from '../../utils/utils'
 
 let newSocket;
 const DashBoard = () => {
@@ -16,16 +17,11 @@ const DashBoard = () => {
   const { loggedIn, chatId, username } = useSelector(state => state.user)
   const [component, setComponent] = useState(null)
   const [loading,setLoading] = useState(true)
+  const friends = useSelector(state => state.friends)
 
-  const getFriends = async () => {
-    let { data } = await axios.get('http://localhost:5000/api/friends',{ headers : { Authorization : localStorage.getItem('converse_app_auth_token')}})
-    if(data.statusload){
-      dispatch({ type:"UPDATE_FRIENDS",payload:data.friends})
-    }
-  }
+
 
   useEffect(() => {
-    getFriends()
     newSocket = io('http://localhost:5000',{ query : { chatId }})
     setComponent(<Chat socket={newSocket}/>)
     setSocket(newSocket)
@@ -39,15 +35,33 @@ const DashBoard = () => {
   //* Write all the [on] socket methods here
   useEffect(() => {
     newSocket.on('friend_request', (data)=>{ 
-      dispatch({type:"ADD_FRIEND",payload:data.requestedfriend})
-      newSocket.emit('friend_request_success',{ acceptedfriend:data.acceptedfriend,chatId:data.requestedfriend.chatId })
+      dispatch({type:"ADD_FRIEND",payload:data.friend})
     })
     
     newSocket.on('friend_request_success', data =>{
-      dispatch({type:"ADD_FRIEND",payload:data})
+      dispatch({type:"ADD_FRIEND",payload:data.friend})
     })
-  },[])
 
+    newSocket.on('accept_friend_request', data => {
+      dispatch({type:"UPDATE_FRIENDS",payload:makeAUserFriend(friends,data.chatId)})
+    })
+    
+    newSocket.on('accept_friend_request_success', data => {
+      dispatch({type:"UPDATE_FRIENDS",payload:makeAUserFriend(friends,data.friendChatId)})
+    })
+
+    //! Sending messages (Working on this)
+    newSocket.on('send_message',data => {
+      console.log("Client 2");
+      console.log(data);
+    })
+    
+    newSocket.on('send_message_success',data => {
+      console.log("Client 1");
+      console.log(data);
+    })
+
+  },[])
 
 
   if(!loggedIn) return <Redirect to="/signup"/>
@@ -56,8 +70,8 @@ const DashBoard = () => {
 
     return (
       <div>
-      <div className={styles.chatId}>{username}</div>
-      <div className={styles.chatId}>{chatId}</div>
+      <div>{username}</div>
+      <div>{chatId}</div>
       <div className={styles.tabs}>
         <div onClick={() => {setComponent(<SearchForFriend socket={socket}/>)}} className={styles.searchtab}>search</div>
         <div onClick={() => {setComponent(<Chat socket={socket}/>)}} className={styles.chattab}>chat</div>

@@ -8,29 +8,20 @@ const NavBar = () => {
   return (
     <div className={styles.auth}>
       <div className={styles.authtitle}>Converse</div>
-      {loggedIn? (
+      {!loggedIn && (
         <div className={styles.authlinks}>
-            <Link to="/dashboard" className={styles.removeUnderline}>
-              <div className={styles.signup}>
-                dashboard
-              </div>
-            </Link>
-        </div>
-      ):(
-        <div className={styles.authlinks}>
-            <Link to="/signup" className={styles.removeUnderline}>
-              <div className={styles.signup}>
-                signup
-              </div>
-            </Link>
+          <Link to="/signup" className={styles.removeUnderline}>
+            <div className={styles.signup}>
+              signup
+            </div>
+          </Link>
 
-            <Link to="/login" className={styles.removeUnderline}>
-              <div className={styles.login}>
-                  login
-              </div>
-            </Link>
+          <Link to="/login" className={styles.removeUnderline}>
+            <div className={styles.login}>
+                login
+            </div>
+          </Link>
         </div>
-
       )}
     </div>
   )
