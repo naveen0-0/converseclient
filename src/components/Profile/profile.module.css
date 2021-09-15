@@ -1,0 +1,17 @@
+.container{
+  width: 90%;
+  margin: auto;
+}
+
+.signout{
+  width: 100px;
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+  color: whitesmoke;
+  font-family: "Fira Code";
+  background:linear-gradient(to left,rgb(0, 128, 128),rgb(31, 102, 102)) ;
+  border-radius: 9999px;
+  margin-top: 20px;
+  cursor: pointer;
+}

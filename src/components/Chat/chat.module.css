@@ -1,0 +1,29 @@
+.container{
+}
+
+.friendrequests{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  padding: 0px 10px;
+}
+
+.person{
+  cursor: pointer;
+}
+
+.requestscontainer{
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  width: 60%;
+  max-height: 100px;
+  min-height: 50px;
+  overflow: auto;
+  background-color: teal;
+  padding: 5px;
+  z-index: 1;
+  border-radius: 5px;
+  border: 2px solid whitesmoke;
+}

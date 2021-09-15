@@ -1,0 +1,84 @@
+.container{
+  min-height: 90vh;
+  margin: auto;
+  display: flex;
+}
+
+.svg{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authen2{
+  width: 80%;
+  height: 100%;
+}
+
+.formcontainer{
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formtitle{
+  color: whitesmoke;
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: "Fira Code";
+}
+
+.form{
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.username, .password {
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+  width: 100%;
+  background-color: rgb(32, 30, 30);
+  font-family: "Fira Code";
+  color: rgb(202, 202, 202);
+  border-radius: 99999px;
+  border: 1px solid #03bebe;
+}
+
+.loginbtn{
+  width: 100px;
+  outline: none;
+  border: none;
+  padding: 8px 14px;
+  background:linear-gradient(to right, rgb(0, 128, 111), rgb(11, 105, 97));
+  font-family: "Fira Code";
+  border-radius: 999999px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.feedback{
+  color: salmon;
+  font-family: "Fira Code";
+  margin: 10px 0px;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+@media screen and (max-width:900px) {
+  .svg {
+      display: none;
+  }
+  .formcontainer{
+    display: block;
+    margin-top: 50px;
+  }
+}

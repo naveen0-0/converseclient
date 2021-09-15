@@ -1,0 +1,86 @@
+.container{
+  width: 90%;
+  margin: auto;
+}
+
+.formcontainer{
+  margin-top: 20px;
+}
+.usernamecontainer{
+  position:relative
+}
+
+.usernameinput{
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 10px 14px;
+  background-color: rgb(88, 88, 88);
+  font-family: 'Fira Code';
+  border-radius: 5px;
+  color: #03bebe;
+  border: 1px solid #03bebe;
+}
+
+.searchbtn{
+  width: 100px;
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+  color: whitesmoke;
+  font-family: "Fira Code";
+  background-color: rgb(0, 128, 128);
+  border-radius: 9999px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.friend{
+  background-color: #1f2424;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imgname{
+  background-color: #1f2424;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.friendimg{
+  background-color: #03bebe;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  padding: 20px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Fira Code";
+  font-size: 22px;
+}
+
+.friendname{
+  font-family: "Fira Code";
+  font-size: 16px;
+  padding: 0px 10px;
+  background-color: #1f2424;
+}
+
+.friendrequest{
+  outline: none;
+  border: none;
+  background-color: #148a8a;
+  font-family: "Fira Code";
+  border-radius: 99999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+

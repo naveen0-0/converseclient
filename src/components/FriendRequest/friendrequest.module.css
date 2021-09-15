@@ -1,0 +1,54 @@
+.request{
+  padding: 10px;
+  border-radius: 5px;
+  border-bottom: 1px solid teal;
+}
+
+.username{
+  font-family: "Fira Code";
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.acceptordecline{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.accept,.decline{
+  outline: none;
+  border: none;
+  border-radius: 999998px;
+  padding: 4px 12px;
+  font-family: "Fira Code";
+  font-size: 12px;
+  cursor: pointer;
+}
+.accept{
+  background-color: teal;
+}
+.decline{
+  background-color: crimson;
+}
+
+.imguser{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.img{
+  background-color: teal;
+  font-family: "Fira Code";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 16px;
+
+}
